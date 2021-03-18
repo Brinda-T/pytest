@@ -1,0 +1,21 @@
+gcc -c -Wall -g  amath.c
+amath.c: In function ‘get_factorial_value’:
+amath.c:12:9: warning: ‘i’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  printf ("-->%u\n", i);
+         ^
+gcc -c -Wall -g  main.c
+main.c:4:1: warning: return type defaults to ‘int’ [-Wreturn-type]
+ main(int argc, char *argv[])
+ ^
+main.c: In function ‘main’:
+main.c:10:3: warning: implicit declaration of function ‘get_factorial_value’ [-Wimplicit-function-declaration]
+   retval = get_factorial_value(5);
+   ^
+main.c:16:2: warning: implicit declaration of function ‘strcasecmp’ [-Wimplicit-function-declaration]
+  if (strcasecmp(argv[1] , "test2") == 0)
+  ^
+main.c:36:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+gcc -Wall -g  amath.o main.o -o math.out
+
