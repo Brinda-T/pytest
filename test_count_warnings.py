@@ -1,4 +1,4 @@
-""" to import pytest module """
+"""import pytest module """
 import pytest
 from count_warnings import is_valid_aruguments
 from count_warnings import get_warn_count_by_file
@@ -7,11 +7,11 @@ from count_warnings import is_build_promoted
 from count_warnings import main
 
 TEST_MAIN_DATA = [
-    {"data": ["count_warnings.py", "2log.txt", "1log.txt"],
-     "exp_result": True},
-    {"data": ["count_warnings.py", "1log.txt", "2log.txt"],
-     "exp_result": False},
-]
+        {"data": ["count_warnings.py", "2log.txt", "1log.txt"],
+         "exp_result": True},
+        {"data": ["count_warnings.py", "1log.txt", "2log.txt"],
+         "exp_result": False}
+        ]
 
 
 @pytest.mark.parametrize("ipd", TEST_MAIN_DATA)
@@ -39,7 +39,8 @@ TEST_IS_VALID_ARUGUMENTS_DATA = [
         {"data": ["vinay", "1log.txt", "2log.txt"], "exp_result": True},
         {"data": ["vinay", "1log.txt"], "exp_result": False},
         {"data": ["vinay"], "exp_result": False},
-        {"data": ["vinay", "1log.txt", "2log.txt", "hggkj"], "exp_result": True},
+        {"data": ["vinay", "1log.txt", "2log.txt", "hggkj"],
+         "exp_result": True},
         {"data": [" "], "exp_result": False}
         ]
 
@@ -69,7 +70,8 @@ def test_get_warn_count_by_file(ipd):
 
 
 TEST_GET_WARNING_COUNT_DATA = [
-        {"data": ["warning", "is warning", "warning  warning"], "exp_result": 4},
+        {"data": ["warning", "is warning", "warning  warning"],
+         "exp_result": 4},
         {"data": ["warning", "is the warning", "warning"], "exp_result": 3},
         {"data": [''], "exp_result": 4}
         ]
@@ -81,7 +83,6 @@ def test_get_warning_count(ipd):
     retval = get_warning_count(ipd["data"])
     print(retval)
     assert retval == ipd["exp_result"]
-
 
 
 TEST_IS_BUILD_PROMOTED_DATA = [
