@@ -2,5 +2,4 @@
 This is my first file to git repo. Its my account2
 
 =======
-This is my first file to git repo changed by  vinay kumar reddy
->>>>>>> 2babff732dba453028a1bb50010792f6bed73a01
+"This is my first file to git repo changed by  vinay kumar reddy
