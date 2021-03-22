@@ -10,10 +10,7 @@ test_main_data = [
         "exp_result": True},
     {"data": ["count_warnings.py", "1log.txt", "2log.txt"],
         "exp_result": False},
-    {"data": ["count_warnings.py", "1log.txt"],
-        "exp_result":SystemExit},
-    {"data": ["count_warnings.py", "1log.txt", "3log.txt"],
-        "exp_result":0},
+    
 ]
 @pytest.mark.parametrize("ipd", test_main_data)
 def test_main(ipd):
@@ -22,50 +19,61 @@ def test_main(ipd):
     assert retval == ipd["exp_result"]
 
 
-test_data1 = [
+test_main_data_excp = [
+    {"data": ["count_warnings.py", "1log.txt"],
+        "exp_result":SystemExit}
+]
+@pytest.mark.parametrize("ipd", test_main_data_excp)
+def test_main_data_excpection(ipd):
+    with pytest.raises(ipd["exp_result"]):
+        main(ipd["data"])
+
+    
+
+test_is_valid_aruguments_data = [
     {"data": ("vinay", "1log.txt", "2log.txt"), "exp_result": True},
     {"data": ("vinay", "1log.txt"), "exp_result": False},
     {"data": ("vinay"), "exp_result": False},
     {"data": ("vinay", "1log.txt", "2log.txt", "hggkj"), "exp_result": False},
     {"data": (" "), "exp_result": False},
 ]
-@pytest.mark.parametrize("ipd", test_data1)
+@pytest.mark.parametrize("ipd", test_is_valid_aruguments_data)
 def test_is_valid_aruguments(ipd):
     retval = is_valid_aruguments(ipd["data"])
     print(retval)
     assert retval == ipd["exp_result"]
 
 
-test_data2 = [
+test_get_warn_count_by_file_data = [
     {"data": "1log.txt", "exp_result": 4},
     {"data": "2log.txt", "exp_result": 5},
     {"data": "3log.txt", "exp_result": 0},
     {"data": " ", "exp_result": 0}
 ]
-@pytest.mark.parametrize("ipd", test_data2)
+@pytest.mark.parametrize("ipd", test_get_warn_count_by_file_data)
 def test_get_warn_count_by_file(ipd):
     retval = get_warn_count_by_file(ipd["data"])
     print(retval)
     assert retval == ipd["exp_result"]
 
 
-test_data3 = [
+test_get_warning_count_data = [
     {"data": ["warning", "is warning", "warning  warning"], "exp_result": 4},
     {"data": ["warning", "is the warning", "warning"], "exp_result": 3},
     {"data": [''], "exp_result": 4},
 ]
-@pytest.mark.parametrize("ipd", test_data3)
+@pytest.mark.parametrize("ipd", test_get_warning_count_data)
 def test_get_warning_count(ipd):
     retval = get_warning_count(ipd["data"])
     print(retval)
     assert retval == ipd["exp_result"]
 
 
-test_data4 = [
+test_is_build_promoted_data = [
     {"data": [['1log.txt', 4], ['2log.txt', 5]], "exp_result": -1},
     {"data": [['1log.txt', 5], ['2log.txt', 4]], "exp_result": 0},
 ]
-@pytest.mark.parametrize("ipd", test_data4)
+@pytest.mark.parametrize("ipd", test_is_build_promoted_data)
 def test_is_build_promoted(ipd):
     retval = is_build_promoted(ipd["data"])
     print(retval)
