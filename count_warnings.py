@@ -4,7 +4,7 @@ import sys
 def get_warning_count(lines):
     wcount = 0
     for line in lines:
-        if (line.find("warning") > 0):
+        if (line.find("warning") >= 0):
             wcount += 1;
         #line = line.lstrip().rstrip()
         #print line.split(":")[4].lstrip()

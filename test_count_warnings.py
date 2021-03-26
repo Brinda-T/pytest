@@ -71,9 +71,9 @@ def test_get_warn_count_by_file(ipd):
 
 TEST_GET_WARNING_COUNT_DATA = [
         {"data": ["warning", "is warning", "warning  warning"],
-         "exp_result": 4},
+         "exp_result": 3},
         {"data": ["warning", "is the warning", "warning"], "exp_result": 3},
-        {"data": [''], "exp_result": 4}
+        {"data": [''], "exp_result": 0}
         ]
 
 
